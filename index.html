@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সংযো্গ – নোফেল</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bangla Font (Hind Siliguri from Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- AOS (Animate On Scroll) Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Ekko Lightbox CSS (Optional but used in picture gallery) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.css">
+
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            padding-top: 70px; /* Navbar height */
+            line-height: 1.8;
+            color: #343a40; /* Darker grey for better contrast */
+            background-color: #f8f9fa; /* Light grey background */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            color: #2c3e50; /* A deep blue for headings */
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem; /* Slightly larger */
+            color: #0056b3 !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #343a40 !important;
+            transition: color 0.3s ease;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #007bff !important;
+        }
+        .dropdown-item.active, .dropdown-item:active {
+            background-color: #007bff;
+            color: white !important;
+        }
+        .dropdown-menu {
+            border-radius: 0 0 .25rem .25rem; /* Match Bootstrap styling */
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        }
+
+        .highlight {
+            color: #007bff;
+        }
+
+        /* Hero Section Styles */
+        .hero-section .carousel-item {
+            height: 90vh; /* Increased height */
+            min-height: 500px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        /* Subtle overlay for better text readability on hero images */
+        .hero-section .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35); /* Adjust opacity as needed */
+            z-index: 1;
+        }
+
+        .hero-section .carousel-caption {
+            bottom: 15%; /* Positioned a bit higher */
+            left: 10%;
+            right: 10%;
+            text-align: left; /* Default to left, can be overridden per slide */
+            background-color: transparent; /* Overlay is on the item itself */
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 2; /* Above the item overlay */
+        }
+        .hero-section .carousel-caption h1 {
+            font-size: 3.2rem; /* Larger heading */
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Soft shadow for depth */
+            margin-bottom: 20px;
+        }
+        .hero-section .carousel-caption p {
+            font-size: 1.3rem; /* Larger paragraph */
+            color: #f8f9fa;
+            margin-bottom: 25px;
+        }
+        .hero-section .btn {
+            padding: 14px 35px; /* Larger button */
+            font-size: 1.15rem;
+            border-radius: 30px; /* More rounded */
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .hero-section .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .hero-section .btn-outline-light:hover {
+            color: #333;
+        }
+
+        /* Page Header Style */
+        .page-header-section {
+            border-bottom: 4px solid #007bff;
+            padding-bottom: 25px;
+            margin-bottom: 45px;
+        }
+        .page-header-section h1 {
+            font-size: 3rem;
+        }
+        .page-header-section .lead {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Card enhancements */
+        .card {
+            border: none;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 10px; /* More rounded cards */
+            background-color: #fff; /* Ensure cards are white */
+        }
+        .card:hover {
+            transform: translateY(-10px); /* More lift */
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12) !important; /* Softer, larger shadow */
+        }
+        .event-card .card-title, .blog-card .card-title {
+            min-height: 48px;
+            color: #0056b3;
+            font-size: 1.25rem; /* Slightly larger card titles */
+        }
+        .card-img-top {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 220px; /* Standardized height */
+            object-fit: cover;
+        }
+        .card-text {
+            color: #5f6771; /* Softer text color for card body */
+        }
+        .card .btn-sm {
+             padding: .35rem .75rem;
+             font-size: .875rem;
+        }
+
+
+        /* Footer styling */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+        }
+        footer h5 {
+            color: #ecf0f1;
+            font-weight: 600;
+        }
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #3498db !important;
+            text-decoration: underline !important;
+        }
+        footer .fab {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        footer .btn-floating:hover .fab {
+            transform: scale(1.2);
+        }
+        footer .btn-floating {
+             margin: 0.25rem;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) { /* lg breakpoint */
+             .hero-section .carousel-item { height: 80vh; min-height: 450px;}
+             .hero-section .carousel-caption h1 { font-size: 2.5rem; }
+             .hero-section .carousel-caption p { font-size: 1.1rem; }
+        }
+        @media (max-width: 768px) { /* md breakpoint */
+            body { padding-top: 60px; }
+            .hero-section .carousel-item {
+                height: 70vh; min-height: 400px;
+            }
+            .hero-section .carousel-caption h1 {
+                font-size: 2rem;
+            }
+            .hero-section .carousel-caption p {
+                font-size: 1rem;
+            }
+            .page-header-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section .carousel-caption {
+                bottom: 10%;
+                text-align: center; /* Center align on smaller screens */
+            }
+        }
+
+        /* Section specific styling */
+        section[id^="page-"] {
+            padding-top: 40px;
+            padding-bottom: 60px;
+            min-height: 70vh;
+        }
+        #key-features .card-body i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        #key-features .card:hover .card-body i {
+            transform: scale(1.2) rotate(7deg);
+            color: #007bff;
+        }
+        .team-member-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 5px solid #007bff; /* Thicker border */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .gallery-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .gallery-img-container img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-img-container:hover img {
+            transform: scale(1.1);
+        }
+        .breadcrumb {
+            background-color: #e9ecef;
+            border-radius: .25rem;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        .form-control {
+            border-radius: .25rem;
+        }
+        .btn {
+            border-radius: .25rem; /* Consistent button radius */
+            font-weight: 500;
+        }
+        .btn-primary { background-color: #007bff; border-color: #007bff;}
+        .btn-primary:hover { background-color: #0056b3; border-color: #0056b3;}
+
+
+        /* Member Feedback Section */
+        #member-feedback-carousel .carousel-item {
+            padding: 20px 50px;
+            min-height: 350px; /* Increased height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa; /* Light background for this section if separate */
+        }
+        .feedback-card {
+            text-align: center;
+            background-color: #fff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            max-width: 700px;
+        }
+        .feedback-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .feedback-card h5 {
+            color: #0056b3;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .feedback-card p {
+            font-style: italic;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        #member-feedback-carousel .carousel-control-prev-icon,
+        #member-feedback-carousel .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark controls */
+            border-radius: 50%;
+            padding: 15px; /* Make icons appear larger */
+        }
+
+        /* Member List Images */
+        .member-list-img {
+            width: 60px; /* Slightly larger */
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #dee2e6; /* Light border */
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef; /* Subtle hover for table rows */
+        }
+        .thead-dark th {
+            background-color: #343a40; /* Standard dark head */
+            border-color: #454d55;
+        }
+
+        /* Single Blog/Event Detail Page Styling */
+        .single-post-content img, .single-event-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .single-post-content h1, .single-event-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .single-post-content .text-muted, .single-event-content .text-muted {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .single-post-content p, .single-event-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+            color: #495057;
+        }
+        .single-post-content ul, .single-event-content ul,
+        .single-post-content ol, .single-event-content ol {
+            padding-left: 20px;
+            margin-bottom: 1.2rem;
+        }
+        .single-post-content li, .single-event-content li {
+            margin-bottom: 0.5rem;
+        }
+        .section-title { /* For section headers like "সর্বশেষ সংবাদ ও নোটিশ" */
+            margin-bottom: 3rem !important;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title::after { /* Underline accent */
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .why-choose-us-item i {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .why-choose-us-item:hover i {
+            transform: scale(1.1) translateY(-5px);
+        }
+        .why-choose-us-item h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand page-router" href="#" data-page="home">সংযো্গ – নোফেল</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="home">হোম</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                আমাদের সম্পর্কে
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                <a class="dropdown-item page-router" href="#" data-page="about" data-section="mission-vision">মিশন ও ভিশন</a>
+                                <a class="dropdown-item page-router" href="#" data-page="about" data-section="values">আমাদের মূল্যবোধ</a>
+                                <a class="dropdown-item page-router" href="#" data-page="about" data-section="future-plans">ভবিষ্যৎ পরিকল্পনা</a>
+                                <a class="dropdown-item page-router" href="#" data-page="about" data-section="messages">বার্তা</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="team">আমাদের টিম</a></li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="press">প্রেস</a></li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="galleryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                গ্যালারি
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="galleryDropdown">
+                                <a class="dropdown-item page-router" href="#" data-page="video-gallery">ভিডিও গ্যালারি</a>
+                                <a class="dropdown-item page-router" href="#" data-page="picture-gallery">ছবি গ্যালারি</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="blog">ব্লগ</a></li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="events">ইভেন্টস</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="memberDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                সদস্য
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="memberDropdown">
+                                <a class="dropdown-item page-router" href="#" data-page="life-members">আজীবন সদস্য তালিকা</a>
+                                <a class="dropdown-item page-router" href="#" data-page="members">সদস্য তালিকা</a>
+                                <!-- Removed: <a class="dropdown-item page-router" href="#" data-page="member-login">সদস্য লগইন</a> -->
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="application-form">আবেদনপত্র</a></li>
+                        <li class="nav-item"><a class="nav-link page-router" href="#" data-page="contact">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <!-- HOME PAGE CONTENT -->
+        <section id="page-home" style="display:none; padding-top:0;"> <!-- Remove padding-top for home to allow hero full bleed -->
+            <!-- Hero Section (Penchi Slider) -->
+            <div class="hero-section">
+                <div id="heroCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <ol class="carousel-indicators">
+                        <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#heroCarousel" data-slide-to="1"></li>
+                        <li data-target="#heroCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="background-image: url('https://picsum.photos/seed/hero1/1920/1080');">
+                            <div class="carousel-caption">
+                                <h1 data-aos="fade-down" data-aos-delay="200">সংযো্গ – নোফেল: <span class="highlight">এক নতুন দিগন্ত</span></h1>
+                                <p data-aos="fade-up" data-aos-delay="400">আমাদের সাথে যোগ দিন এবং সমাজে ইতিবাচক পরিবর্তন আনুন। আমরা বিশ্বাস করি একতাই শক্তি।</p>
+                                <a href="#" class="btn btn-primary btn-lg page-router" data-page="application-form" data-aos="zoom-in" data-aos-delay="600">এখনই আবেদন করুন</a>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/hero2/1920/1080');">
+                             <div class="carousel-caption text-center">
+                                <h1 data-aos="zoom-out" data-aos-delay="200">আমাদের <span class="highlight">ইভেন্টসমূহ</span> আবিষ্কার করুন</h1>
+                                <p data-aos="fade-up" data-aos-delay="400">সদস্য এবং জনসাধারণের জন্য বিভিন্ন শিক্ষামূলক ও সামাজিক অনুষ্ঠান অপেক্ষা করছে।</p>
+                                <a href="#" class="btn btn-outline-light btn-lg page-router" data-page="events" data-aos="zoom-in" data-aos-delay="600">আরও জানুন</a>
+                            </div>
+                        </div>
+                         <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/hero3/1920/1080');">
+                             <div class="carousel-caption text-right">
+                                <h1 data-aos="fade-left" data-aos-delay="200">সাহায্যের হাত <span class="highlight">বাড়িয়ে দিন</span></h1>
+                                <p data-aos="fade-right" data-aos-delay="400">আপনার সামান্য অনুদান অনেকের জীবনে বড় পরিবর্তন আনতে পারে। মানবতার সেবায় এগিয়ে আসুন।</p>
+                                <a href="#" class="btn btn-warning btn-lg page-router" data-page="donate" data-aos="zoom-in" data-aos-delay="600">অনুদান করুন</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">পূর্ববর্তী</span>
+                    </a>
+                    <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">পরবর্তী</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Welcome Section -->
+            <section id="welcome" class="py-5">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                            <h2 class="mb-4 section-title text-left" style="font-size:2rem;">সংযো্গ – নোফেল এ <span class="highlight">আপনাকে স্বাগতম</span></h2>
+                            <style>#welcome .section-title::after { left:0; transform: translateX(0);}</style> <!-- Align underline for left-aligned title -->
+                            <p>সংস্থা সম্পর্কে একটি উষ্ণ স্বাগত বার্তা। এটি সংস্থার মূল উদ্দেশ্য এবং কিভাবে এটি সদস্যদের এবং সমাজের জন্য উপকারী তা সংক্ষেপে বর্ণনা করবে। আমরা বিশ্বাস করি একতা এবং সহযোগিতার মাধ্যমে আমরা একটি উন্নত ভবিষ্যৎ গড়তে পারি। আমাদের লক্ষ্য একটি জ্ঞানভিত্তিক, সহানুভূতিশীল এবং প্রগতিশীল সমাজ গঠনে সক্রিয় ভূমিকা রাখা।</p>
+                            <a href="#" class="btn btn-secondary page-router mt-3" data-page="about">আমাদের সম্পর্কে জানুন <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                        <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="200">
+                            <img src="https://picsum.photos/seed/welcomeNofel/600/400" alt="সংস্থা" class="img-fluid rounded shadow-lg" style="max-height: 380px; border: 5px solid white;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Features Section -->
+            <section id="key-features" class="py-5 bg-light">
+                <div class="container text-center">
+                    <h2 class="mb-5 section-title">আমাদের <span class="highlight">প্রধান কার্যক্রম</span></h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-4" data-aos="zoom-in-up">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                                    <h5 class="card-title">সদস্যপদ</h5>
+                                    <p class="card-text">আমাদের ক্রমবর্ধমান কমিউনিটিতে যোগ দিন এবং বিভিন্ন সুবিধা ও নেটওয়ার্কিং এর সুযোগ উপভোগ করুন।</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+                             <div class="card h-100 shadow-sm">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-calendar-check fa-3x text-success mb-3"></i> <!-- Changed icon -->
+                                    <h5 class="card-title">ইভেন্ট ম্যানেজমেন্ট</h5>
+                                    <p class="card-text">সদস্যদের জন্য শিক্ষামূলক সেমিনার, কর্মশালা এবং সামাজিক অনুষ্ঠানের আয়োজন করা হয়।</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body p-4">
+                                    <i class="fas fa-hands-helping fa-3x text-info mb-3"></i> <!-- Changed icon -->
+                                    <h5 class="card-title">সামাজিক উদ্যোগ</h5>
+                                    <p class="card-text">বিভিন্ন সামাজিক উন্নয়নমূলক প্রকল্পে অংশগ্রহণ এবং সমাজের পিছিয়ে পড়া মানুষের জন্য কাজ করা।</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section - NEW -->
+            <section id="why-choose-us" class="py-5">
+                <div class="container text-center">
+                    <h2 class="mb-5 section-title">কেন <span class="highlight">সংযো্গ – নোফেল</span>?</h2>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="why-choose-us-item">
+                                <i class="fas fa-link"></i>
+                                <h5>শক্তিশালী নেটওয়ার্ক</h5>
+                                <p>বিভিন্ন পেশার মানুষের সাথে সংযোগ স্থাপন ও সম্পর্ক উন্নয়নের সুযোগ।</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="why-choose-us-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <h5>জ্ঞান ও দক্ষতা</h5>
+                                <p>কর্মশালা ও প্রশিক্ষণের মাধ্যমে নতুন জ্ঞান অর্জন এবং দক্ষতা বৃদ্ধি।</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="why-choose-us-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h5>পারস্পরিক সহযোগিতা</h5>
+                                <p>সদস্যদের মধ্যে পারস্পরিক সহযোগিতা ও সমর্থনের একটি নির্ভরযোগ্য প্ল্যাটফর্ম।</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="why-choose-us-item">
+                                <i class="fas fa-seedling"></i>
+                                <h5>সামাজিক অবদান</h5>
+                                <p>সমাজের ইতিবাচক পরিবর্তনে সক্রিয়ভাবে অংশগ্রহণের সুযোগ লাভ।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Latest News Section -->
+            <section id="latest-news-home" class="py-5 bg-light">
+                <div class="container">
+                    <h2 class="text-center mb-5 section-title">সর্বশেষ <span class="highlight">সংবাদ ও নোটিশ</span></h2>
+                    <div class="row" id="home-blog-posts-container">
+                        <!-- Blog posts will be rendered here by JavaScript -->
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-primary page-router" data-page="blog">সকল সংবাদ দেখুন <i class="fas fa-angle-double-right ml-1"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Events Section -->
+            <section id="latest-events-home" class="py-5">
+                <div class="container">
+                    <h2 class="text-center mb-5 section-title">আমাদের আসন্ন <span class="highlight">ইভেন্টসমূহ</span></h2>
+                    <div class="row" id="home-events-container">
+                        <!-- Events will be rendered here by JavaScript -->
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-primary page-router" data-page="events">সকল ইভেন্ট দেখুন <i class="fas fa-angle-double-right ml-1"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Member Feedback Section -->
+            <section id="member-feedback-section" class="py-5 bg-light">
+                <div class="container">
+                    <h2 class="text-center mb-5 section-title">সদস্যদের <span class="highlight">মতামত</span></h2>
+                    <div id="member-feedback-carousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+                        <div class="carousel-inner" id="feedback-carousel-inner">
+                            <!-- Feedback items will be rendered here by JavaScript -->
+                        </div>
+                        <a class="carousel-control-prev" href="#member-feedback-carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">পূর্ববর্তী</span>
+                        </a>
+                        <a class="carousel-control-next" href="#member-feedback-carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">পরবর্তী</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ABOUT PAGE CONTENT -->
+        <section id="page-about" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">আমাদের সম্পর্কে</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>আমাদের <span class="highlight">সম্পর্কে</span></h1>
+                <p class="lead">সংযো্গ – নোফেল এর লক্ষ্য, উদ্দেশ্য এবং ভবিষ্যতের পরিকল্পনা সম্পর্কে জানুন।</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="list-group mb-4 shadow-sm" id="about-nav" data-aos="fade-right">
+                        <a class="list-group-item list-group-item-action" href="#mission-vision-content">মিশন ও ভিশন</a>
+                        <a class="list-group-item list-group-item-action" href="#values-content">আমাদের মূল্যবোধ</a>
+                        <a class="list-group-item list-group-item-action" href="#future-plans-content">ভবিষ্যৎ পরিকল্পনা</a>
+                        <a class="list-group-item list-group-item-action" href="#messages-content">বার্তা</a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div id="mission-vision-content" class="mb-5 p-4 bg-white rounded shadow-sm" data-aos="fade-up">
+                        <h2><i class="fas fa-bullseye text-primary mr-2"></i>মিশন ও ভিশন</h2>
+                        <p><strong>আমাদের মিশন:</strong> সমাজের প্রতিটি স্তরে শিক্ষা, সংস্কৃতি এবং সহযোগিতার প্রসার ঘটানো। আমরা একটি সহানুভূতিশীল এবং ন্যায়পরায়ণ সমাজ গঠনে প্রতিশ্রুতিবদ্ধ, যেখানে প্রত্যেকে তাদের সম্ভাবনা বিকাশের সুযোগ পাবে।</p>
+                        <p><strong>আমাদের ভিশন:</strong> একটি উন্নত, জ্ঞানভিত্তিক এবং প্রগতিশীল বাংলাদেশ গড়ে তোলা, যেখানে সংযো্গ – নোফেল একটি আলোকবর্তিকা হিসেবে কাজ করবে এবং ইতিবাচক পরিবর্তনের অনুঘটক হবে।</p>
+                    </div>
+                    <hr class="my-4">
+                    <div id="values-content" class="mb-5 p-4 bg-white rounded shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                        <h2><i class="fas fa-heart text-danger mr-2"></i>আমাদের মূল্যবোধ</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success mr-2"></i><strong>একতা ও সহযোগিতা:</strong> আমরা বিশ্বাস করি সম্মিলিত প্রচেষ্টাই সাফল্যের মূল।</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success mr-2"></i><strong>স্বচ্ছতা ও জবাবদিহিতা:</strong> আমাদের সকল কার্যক্রমে আমরা স্বচ্ছতা বজায় রাখি।</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success mr-2"></i><strong>উদ্ভাবন ও প্রগতি:</strong> নতুন ধারণা এবং প্রগতিশীল চিন্তাধারাকে আমরা স্বাগত জানাই।</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success mr-2"></i><strong>শ্রদ্ধা ও সহানুভূতি:</strong> প্রত্যেকের প্রতি শ্রদ্ধা এবং বিপদগ্রস্তদের প্রতি সহানুভূতি আমাদের চালিকা শক্তি।</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success mr-2"></i><strong>শিক্ষা ও উন্নয়ন:</strong> জ্ঞানার্জন এবং ব্যক্তিগত উন্নয়নের উপর আমরা গুরুত্ব আরোপ করি।</li>
+                        </ul>
+                    </div>
+                    <hr class="my-4">
+                    <div id="future-plans-content" class="mb-5 p-4 bg-white rounded shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                        <h2><i class="fas fa-lightbulb text-warning mr-2"></i>ভবিষ্যৎ পরিকল্পনা</h2>
+                        <p>আগামী দিনে সংযো্গ – নোফেল তার কার্যক্রম আরও বিস্তৃত করতে চায়। আমাদের প্রধান পরিকল্পনাগুলির মধ্যে রয়েছে:</p>
+                        <ul class="list-styled">
+                            <li>গ্রামাঞ্চলে ডিজিটাল শিক্ষা কেন্দ্র স্থাপন।</li>
+                            <li>সদস্যদের জন্য দক্ষতা উন্নয়ন কর্মশালা আয়োজন।</li>
+                            <li>একটি স্থায়ী দাতব্য তহবিল গঠন।</li>
+                            <li>পরিবেশ সচেতনতামূলক কার্যক্রম বৃদ্ধি।</li>
+                        </ul>
+                    </div>
+                    <hr class="my-4">
+                    <div id="messages-content" class="p-4 bg-white rounded shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                        <h2><i class="fas fa-envelope-open-text text-info mr-2"></i>বার্তা</h2>
+                        <div class="media mb-3">
+                            <img src="https://picsum.photos/seed/founderAvatar/64/64" class="mr-3 rounded-circle" alt="প্রতিষ্ঠাতা">
+                            <div class="media-body">
+                                <h5 class="mt-0">প্রতিষ্ঠাতার বার্তা</h5>
+                                "সংযো্গ – নোফেল একটি স্বপ্ন নিয়ে যাত্রা শুরু করেছিল – এমন একটি প্ল্যাটফর্ম তৈরি করা যেখানে মানুষ একে অপরের সাথে যুক্ত হতে পারে, শিখতে পারে এবং সমাজের জন্য ভালো কিছু করতে পারে। আপনাদের সকলের সহযোগিতায় আমরা সেই স্বপ্ন পূরণের পথে এগিয়ে চলেছি।"
+                            </div>
+                        </div>
+                         <div class="media">
+                            <img src="https://picsum.photos/seed/presidentAvatar/64/64" class="mr-3 rounded-circle" alt="সভাপতি">
+                            <div class="media-body">
+                                <h5 class="mt-0">সভাপতির বার্তা</h5>
+                                "আমাদের সকল সদস্য, শুভানুধ্যায়ী এবং কর্মীদের প্রতি আমি কৃতজ্ঞতা জানাই। আপনাদের সমর্থন ছাড়া আমাদের এই পথচলা সম্ভব হতো না। আসুন, আমরা সকলে মিলে সংযো্গ – নোফেলকে আরও উচ্চতায় নিয়ে যাই।"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR TEAM PAGE CONTENT -->
+        <section id="page-team" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">আমাদের টিম</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>আমাদের <span class="highlight">টিম</span></h1>
+                <p class="lead">সংযো্গ – নোফেল এর নিবেদিতপ্রাণ সদস্যদের সাথে পরিচিত হন যারা এই সংস্থাকে এগিয়ে নিয়ে যাচ্ছেন।</p>
+            </div>
+            <div class="row" id="team-members-container">
+                <!-- Team members will be rendered here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- PRESS PAGE CONTENT -->
+        <section id="page-press" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">প্রেস</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1><span class="highlight">প্রেস</span> ও মিডিয়া</h1>
+                <p class="lead">সংবাদমাধ্যমে সংযো্গ – নোফেল সম্পর্কে প্রকাশিত প্রতিবেদনসমূহ।</p>
+            </div>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-3 shadow-sm" data-aos="fade-left">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">সংবাদ শিরোনাম ১: সংযো্গ – নোফেল এর সফল উদ্যোগ</h5>
+                    <small><i class="fas fa-calendar-alt mr-1"></i> ১৫ই জুলাই, ২০২৪</small>
+                    </div>
+                    <p class="mb-1">সংবাদের একটি সংক্ষিপ্ত অংশ এখানে থাকবে। সংযো্গ – নোফেল সম্প্রতি একটি গুরুত্বপূর্ণ সামাজিক কর্মসূচী সম্পন্ন করেছে যা স্থানীয় সম্প্রদায়ের মধ্যে ব্যাপক সাড়া ফেলেছে...</p>
+                    <small class="text-muted">প্রকাশক: দৈনিক প্রথম আলো (উদাহরণ)</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-3 shadow-sm" data-aos="fade-left" data-aos-delay="100">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">সংবাদ শিরোনাম ২: সামাজিক উন্নয়নে সংযো্গ – নোফেল</h5>
+                    <small><i class="fas fa-calendar-alt mr-1"></i> ১০ই জুলাই, ২০২৪</small>
+                    </div>
+                    <p class="mb-1">আরেকটি সংবাদের সংক্ষিপ্ত অংশ এখানে থাকবে। সংযো্গ – নোফেল তার ধারাবাহিক কার্যক্রমের অংশ হিসেবে নতুন কিছু পরিকল্পনা গ্রহণ করেছে...</p>
+                    <small class="text-muted">প্রকাশক: দ্য ডেইলি স্টার (উদাহরণ)</small>
+                </a>
+            </div>
+        </section>
+
+        <!-- VIDEO GALLERY PAGE CONTENT -->
+        <section id="page-video-gallery" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#" class="page-router" data-page="gallery-overview">গ্যালারি</a></li> -->
+                    <li class="breadcrumb-item active" aria-current="page">ভিডিও গ্যালারি</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1><span class="highlight">ভিডিও</span> গ্যালারি</h1>
+                <p class="lead">আমাদের বিভিন্ন কার্যক্রম ও ইভেন্টের ভিডিও চিত্র।</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="zoom-in">
+                    <div class="card shadow-sm">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rokGy0huYEA" allowfullscreen></iframe> <!-- Example Video ID -->
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">বার্ষিক সাধারণ সভার ভিডিও</h5>
+                            <p class="card-text"><small class="text-muted">ইভেন্ট: বার্ষিক সাধারণ সভা | তারিখ: ১০ আগস্ট, ২০২৪</small></p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card shadow-sm">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe> <!-- Example Video ID -->
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">রক্তদান কর্মসূচির ঝলক</h5>
+                            <p class="card-text"><small class="text-muted">ইভেন্ট: রক্তদান কর্মসূচি | তারিখ: ২০ আগস্ট, ২০২৪</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PICTURE GALLERY PAGE CONTENT -->
+        <section id="page-picture-gallery" style="display:none;" class="container mt-4">
+             <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#" class="page-router" data-page="gallery-overview">গ্যালারি</a></li> -->
+                    <li class="breadcrumb-item active" aria-current="page">ছবি গ্যালারি</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1><span class="highlight">ছবি</span> গ্যালারি</h1>
+                <p class="lead">আমাদের স্মরণীয় মুহূর্তগুলোর স্থিরচিত্র। ছবিতে ক্লিক করে বড় করে দেখুন।</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in-up">
+                    <a href="https://picsum.photos/seed/galleryLarge1/800/600" data-toggle="lightbox" data-gallery="picture-gallery-main" data-title="বার্ষিক বনভোজন এর ছবি">
+                        <div class="gallery-img-container">
+                           <img src="https://picsum.photos/seed/galleryThumb1/400/300" class="img-fluid" alt="বার্ষিক বনভোজন">
+                        </div>
+                    </a>
+                </div>
+                 <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in-up" data-aos-delay="100">
+                    <a href="https://picsum.photos/seed/galleryLarge2/800/600" data-toggle="lightbox" data-gallery="picture-gallery-main" data-title="বৃক্ষরোপণ কর্মসূচী">
+                        <div class="gallery-img-container">
+                           <img src="https://picsum.photos/seed/galleryThumb2/400/300" class="img-fluid" alt="বৃক্ষরোপণ কর্মসূচী">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in-up" data-aos-delay="200">
+                    <a href="https://picsum.photos/seed/galleryLarge3/800/600" data-toggle="lightbox" data-gallery="picture-gallery-main" data-title="দক্ষতা উন্নয়ন কর্মশালা">
+                        <div class="gallery-img-container">
+                           <img src="https://picsum.photos/seed/galleryThumb3/400/300" class="img-fluid" alt="দক্ষতা উন্নয়ন কর্মশালা">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG PAGE CONTENT (LIST OF ALL BLOGS) -->
+        <section id="page-blog" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ব্লগ/সংবাদ</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1><span class="highlight">ব্লগ</span> ও সংবাদ</h1>
+                <p class="lead">আমাদের সর্বশেষ লেখা, সংবাদ এবং গুরুত্বপূর্ণ নোটিশসমূহ।</p>
+            </div>
+            <div class="row" id="all-blog-posts-container">
+                <!-- All blog posts will be rendered here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Single Blog Post Page -->
+        <section id="page-blog-single" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="blog">ব্লগ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="single-blog-breadcrumb-title">পোস্টের শিরোনাম</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 single-post-content" id="single-blog-content-area">
+                    <!-- Single blog post content will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- LIFE MEMBERS LIST PAGE CONTENT -->
+        <section id="page-life-members" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">আজীবন সদস্য তালিকা</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>আজীবন <span class="highlight">সদস্য তালিকা</span></h1>
+                <p class="lead">সংযো্গ – নোফেল এর সম্মানিত আজীবন সদস্যবৃন্দ।</p>
+            </div>
+            <input class="form-control mb-4 shadow-sm" id="lifeMemberSearch" type="text" placeholder="সদস্য খুঁজুন (নাম, আইডি)...">
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ছবি</th>
+                            <th>সদস্য আইডি</th>
+                            <th>নাম</th>
+                            <th>যোগদানের তারিখ</th>
+                            <th>মোবাইল</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lifeMemberListBody">
+                        <!-- Rows will be rendered here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- GENERAL MEMBERS LIST PAGE CONTENT -->
+        <section id="page-members" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">সাধারণ সদস্য তালিকা</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>সাধারণ <span class="highlight">সদস্য তালিকা</span></h1>
+                <p class="lead">সংযো্গ – নোফেল এর সাধারণ সদস্যবৃন্দ।</p>
+            </div>
+            <input class="form-control mb-4 shadow-sm" id="generalMemberSearch" type="text" placeholder="সদস্য খুঁজুন (নাম, আইডি)...">
+            <div class="table-responsive shadow-sm rounded">
+                <table class="table table-striped table-hover">
+                     <thead class="thead-dark">
+                        <tr>
+                            <th>ছবি</th>
+                            <th>সদস্য আইডি</th>
+                            <th>নাম</th>
+                            <th>যোগদানের তারিখ</th>
+                            <th>মেয়াদ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="generalMemberListBody">
+                        <!-- Rows will be rendered here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- APPLICATION FORM PAGE CONTENT -->
+        <section id="page-application-form" style="display:none;" class="container mt-4">
+             <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">সদস্য আবেদনপত্র</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>সদস্য <span class="highlight">আবেদনপত্র</span></h1>
+                <p class="lead">সংযো্গ – নোফেল এর সদস্য হতে নিচের ফর্মটি পূরণ করুন এবং আমাদের পরিবারের অংশ হোন।</p>
+            </div>
+
+            <form id="memberApplicationForm" data-aos="fade-up" class="needs-validation bg-white p-4 p-md-5 rounded shadow-lg" novalidate>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fullName">পুরো নাম (বাংলায়)</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="আপনার পুরো নাম" required>
+                        <div class="invalid-feedback">অনুগ্রহ করে পুরো নাম লিখুন।</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="fullNameEng">পুরো নাম (ইংরেজিতে বড় হাতের অক্ষরে)</label>
+                        <input type="text" class="form-control" id="fullNameEng" placeholder="FULL NAME IN ENGLISH" required style="text-transform: uppercase;">
+                        <div class="invalid-feedback">অনুগ্রহ করে ইংরেজিতে পুরো নাম লিখুন।</div>
+                    </div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fatherName">পিতার নাম</label>
+                        <input type="text" class="form-control" id="fatherName" placeholder="পিতার নাম" required>
+                        <div class="invalid-feedback">অনুগ্রহ করে পিতার নাম লিখুন।</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="motherName">মাতার নাম</label>
+                        <input type="text" class="form-control" id="motherName" placeholder="মাতার নাম" required>
+                        <div class="invalid-feedback">অনুগ্রহ করে মাতার নাম লিখুন।</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dob">জন্ম তারিখ</label>
+                        <input type="date" class="form-control" id="dob" required>
+                         <div class="invalid-feedback">অনুগ্রহ করে জন্ম তারিখ নির্বাচন করুন।</div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label for="nid">জাতীয় পরিচয়পত্র নম্বর / জন্ম নিবন্ধন নম্বর</label>
+                        <input type="text" class="form-control" id="nid" placeholder="NID or Birth Certificate No." required>
+                        <div class="invalid-feedback">অনুগ্রহ করে জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন নম্বর লিখুন।</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="presentAddress">বর্তমান ঠিকানা</label>
+                    <textarea class="form-control" id="presentAddress" rows="2" placeholder="বাসা/হোল্ডিং, গ্রাম/রাস্তা, ডাকঘর, উপজেলা, জেলা" required></textarea>
+                    <div class="invalid-feedback">অনুগ্রহ করে বর্তমান ঠিকানা লিখুন।</div>
+                </div>
+                 <div class="form-group">
+                    <label for="permanentAddress">স্থায়ী ঠিকানা</label>
+                    <textarea class="form-control" id="permanentAddress" rows="2" placeholder="বাসা/হোল্ডিং, গ্রাম/রাস্তা, ডাকঘর, উপজেলা, জেলা" required></textarea>
+                    <div class="invalid-feedback">অনুগ্রহ করে স্থায়ী ঠিকানা লিখুন।</div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="phone">মোবাইল নম্বর</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="০১৮xxxxxxxx" required pattern="01[3-9]\d{8}">
+                        <div class="invalid-feedback">অনুগ্রহ করে সঠিক মোবাইল নম্বর লিখুন।</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">ইমেইল ঠিকানা</label>
+                        <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                         <div class="invalid-feedback">অনুগ্রহ করে সঠিক ইমেইল ঠিকানা লিখুন।</div>
+                    </div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="occupation">পেশা</label>
+                        <input type="text" class="form-control" id="occupation" placeholder="আপনার পেশা" required>
+                        <div class="invalid-feedback">অনুগ্রহ করে আপনার পেশা লিখুন।</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="membershipType">সদস্যতার ধরণ</label>
+                        <select id="membershipType" class="form-control" required>
+                            <option selected disabled value="">নির্বাচন করুন...</option>
+                            <option value="life">আজীবন সদস্য</option>
+                            <option value="general">সাধারণ সদস্য</option>
+                        </select>
+                        <div class="invalid-feedback">অনুগ্রহ করে সদস্যতার ধরণ নির্বাচন করুন।</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="applicantPhoto">আপনার ছবি আপলোড করুন (পাসপোর্ট সাইজ)</label>
+                        <input type="file" class="form-control-file" id="applicantPhoto" accept="image/*" required>
+                        <small class="form-text text-muted">ছবি অবশ্যই .jpg, .jpeg, বা .png ফরম্যাটে হতে হবে।</small>
+                        <div class="invalid-feedback">অনুগ্রহ করে আপনার ছবি আপলোড করুন।</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="nidScan">জাতীয় পরিচয়পত্র/জন্ম সনদের স্ক্যান কপি</label>
+                        <input type="file" class="form-control-file" id="nidScan" accept="image/*,application/pdf" required>
+                        <small class="form-text text-muted">ফাইল .jpg, .jpeg, .png, বা .pdf ফরম্যাটে হতে হবে।</small>
+                        <div class="invalid-feedback">অনুগ্রহ করে স্ক্যান কপি আপলোড করুন।</div>
+                    </div>
+                </div>
+                <div class="form-group form-check mt-3">
+                    <input type="checkbox" class="form-check-input" id="agreement" required>
+                    <label class="form-check-label" for="agreement">আমি এই মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত সকল তথ্য সঠিক এবং আমি সংস্থার সকল নিয়মকানুন মেনে চলবো।</label>
+                    <div class="invalid-feedback">অনুগ্রহ করে শর্তাদিতে সম্মতি দিন।</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">আবেদন জমা দিন</button>
+                <p class="mt-3 text-center"><small>ফর্ম জমা দেওয়ার পর, আমরা আপনার আবেদন পর্যালোচনা করবো এবং শীঘ্রই আপনার সাথে যোগাযোগ করবো।</small></p>
+            </form>
+        </section>
+
+        <!-- CONTACT PAGE CONTENT -->
+        <section id="page-contact" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">যোগাযোগ</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>আমাদের সাথে <span class="highlight">যোগাযোগ</span></h1>
+                <p class="lead">যেকোনো প্রয়োজনে, প্রশ্ন বা পরামর্শের জন্য আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না।</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4>যোগাযোগের তথ্য</h4>
+                        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i><strong>ঠিকানা:</strong> [আপনার পূর্ণ ঠিকানা], ঢাকা, বাংলাদেশ</p>
+                        <p><i class="fas fa-phone text-primary mr-2"></i><strong>ফোন:</strong> +৮৮০ ১২৩৪ ৫৬৭৮৯০</p>
+                        <p><i class="fas fa-envelope text-primary mr-2"></i><strong>ইমেইল:</strong> info@songjognofel.org</p>
+                        <h5 class="mt-4">সামাজিক মাধ্যম</h5>
+                        <p>
+                            <a href="#" class="text-primary mr-3" aria-label="Facebook"><i class="fab fa-facebook-f fa-2x"></i></a>
+                            <a href="#" class="text-info mr-3" aria-label="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+                            <a href="#" class="text-danger" aria-label="YouTube"><i class="fab fa-youtube fa-2x"></i></a>
+                            <a href="#" class="text-dark" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                        </p>
+                        <div class="mt-4">
+                            <h5>অফিসের সময়</h5>
+                            <p>রবিবার - বৃহস্পতিবার: সকাল ১০:০০ - বিকাল ৫:০০</p>
+                            <p>সাপ্তাহিক ছুটি: শুক্রবার ও শনিবার</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="bg-white p-4 rounded shadow-sm h-100">
+                        <h4>আপনার বার্তা পাঠান</h4>
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="contactName">আপনার নাম</label>
+                                <input type="text" class="form-control" id="contactName" placeholder="আপনার নাম" required>
+                                <div class="invalid-feedback">অনুগ্রহ করে আপনার নাম লিখুন।</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">আপনার ইমেইল</label>
+                                <input type="email" class="form-control" id="contactEmail" placeholder="আপনার ইমেইল" required>
+                                <div class="invalid-feedback">অনুগ্রহ করে একটি সঠিক ইমেইল লিখুন।</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">বিষয়</label>
+                                <input type="text" class="form-control" id="contactSubject" placeholder="বার্তার বিষয়" required>
+                                <div class="invalid-feedback">অনুগ্রহ করে বিষয় লিখুন।</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">আপনার বার্তা</label>
+                                <textarea class="form-control" id="contactMessage" rows="5" placeholder="আপনার বার্তা এখানে লিখুন" required></textarea>
+                                <div class="invalid-feedback">অনুগ্রহ করে আপনার বার্তা লিখুন।</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">বার্তা পাঠান</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="text-center mb-3">আমাদের খুঁজুন</h4>
+                        <div class="embed-responsive embed-responsive-16by9 rounded" style="overflow:hidden;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.874683074564!2d90.38919921539076!3d23.751900094670973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a08e06264d%3A0xf58656feb320589!2sDhaka!5e0!3m2!1sen!2sbd!4v1630000000000!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="embed-responsive-item"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- EVENT LISTING PAGE -->
+        <section id="page-events" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ইভেন্টসমূহ</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1>আমাদের <span class="highlight">ইভেন্টসমূহ</span></h1>
+                <p class="lead">আসন্ন এবং অতীত সকল ইভেন্টগুলি এখানে দেখুন।</p>
+            </div>
+            <div class="row" id="all-events-container">
+                 <!-- Events will be rendered here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Single Event Details Page -->
+        <section id="page-event-details" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="events">ইভেন্টস</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="single-event-breadcrumb-title">ইভেন্টের বিবরণ</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 single-event-content bg-white p-4 p-md-5 rounded shadow-lg" id="single-event-content-area">
+                    <!-- Single event content will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- DONATION PAGE -->
+        <section id="page-donate" style="display:none;" class="container mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="page-router" data-page="home">হোম</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">অনুদান</li>
+                </ol>
+            </nav>
+            <div class="page-header-section text-center mb-5" data-aos="fade-down">
+                <h1><span class="highlight">অনুদান</span> করুন</h1>
+                <p class="lead">আপনার উদার অনুদান আমাদের লক্ষ্য অর্জনে এবং সমাজের উন্নয়নে গুরুত্বপূর্ণ ভূমিকা রাখে।</p>
+            </div>
+           <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <form id="donationForm" data-aos="fade-up" class="needs-validation bg-white p-4 p-md-5 rounded shadow-lg" novalidate>
+                       <div class="form-group">
+                           <label for="donorName">আপনার নাম</label>
+                           <input type="text" class="form-control form-control-lg" id="donorName" placeholder="আপনার পুরো নাম" required>
+                           <div class="invalid-feedback">অনুগ্রহ করে আপনার নাম লিখুন।</div>
+                       </div>
+                       <div class="form-group">
+                           <label for="donorEmail">আপনার ইমেইল</label>
+                           <input type="email" class="form-control form-control-lg" id="donorEmail" placeholder="আপনার ইমেইল ঠিকানা" required>
+                           <div class="invalid-feedback">অনুগ্রহ করে একটি সঠিক ইমেইল লিখুন।</div>
+                       </div>
+                       <div class="form-group">
+                           <label for="donationAmount">অনুদান পরিমাণ (BDT)</label>
+                           <input type="number" class="form-control form-control-lg" id="donationAmount" placeholder="যেমন: 500" required min="100">
+                           <div class="invalid-feedback">অনুগ্রহ করে অনুদানের পরিমাণ লিখুন (ন্যূনতম ১০০)।</div>
+                       </div>
+                       <div class="form-group">
+                            <label for="donationPurpose">অনুদান উদ্দেশ্য (ঐচ্ছিক)</label>
+                            <textarea class="form-control form-control-lg" id="donationPurpose" rows="3" placeholder="নির্দিষ্ট কোনো খাতে অনুদান করতে চাইলে উল্লেখ করুন"></textarea>
+                        </div>
+                       <p class="text-muted text-center"><small>নিরাপদ পেমেন্ট গেটওয়ের মাধ্যমে আপনার অনুদান প্রক্রিয়া করা হবে। (ডেমো)</small></p>
+                       <button type="submit" class="btn btn-success btn-lg btn-block mt-3">এখনই অনুদান করুন</button>
+                   </form>
+                </div>
+           </div>
+        </section>
+
+    </main>
+
+    <footer class="pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">সংযো্গ – নোফেল</h5>
+                    <p>সমাজের কল্যাণে নিবেদিত একটি অলাভজনক সংস্থা। শিক্ষা, সংস্কৃতি এবং সহযোগিতার মাধ্যমে একটি উন্নত ভবিষ্যৎ নির্মাণই আমাদের লক্ষ্য। আমাদের সাথে যুক্ত হোন এবং এই অগ্রযাত্রার অংশীদার হোন।</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">গুরুত্বপূর্ণ লিঙ্ক</h5>
+                    <p><a href="#" class="page-router" data-page="about">আমাদের সম্পর্কে</a></p>
+                    <p><a href="#" class="page-router" data-page="events">ইভেন্টস</a></p>
+                    <p><a href="#" class="page-router" data-page="blog">ব্লগ</a></p>
+                    <p><a href="#" class="page-router" data-page="application-form">সদস্য হোন</a></p>
+                    <p><a href="#" class="page-router" data-page="donate">অনুদান</a></p>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold">যোগাযোগ</h5>
+                    <p><i class="fas fa-home mr-3"></i> [আপনার ঠিকানা], ঢাকা, বাংলাদেশ</p>
+                    <p><i class="fas fa-envelope mr-3"></i> info@songjognofel.org</p>
+                    <p><i class="fas fa-phone mr-3"></i> +৮৮০ ১২৩৪ ৫৬৭৮৯০</p>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-center text-md-right">
+                     <h5 class="text-uppercase mb-4 font-weight-bold">আমাদের অনুসরণ করুন</h5>
+                    <a href="#" class="btn btn-primary btn-floating" style="background-color: #3b5998;" role="button" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-primary btn-floating" style="background-color: #55acee;" role="button" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn btn-primary btn-floating" style="background-color: #dd4b39;" role="button" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="btn btn-primary btn-floating" style="background-color: #0077b5;" role="button" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.15);">
+            <div class="row align-items-center">
+                <div class="col-12 text-center">
+                    <p>&copy; ২০২৫ সংযো্গ – নোফেল। সর্বস্বত্ব সংরক্ষিত। ডিজাইন ও ডেভেলপমেন্ট।</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AOS (Animate On Scroll) Library JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Ekko Lightbox for image galleries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+    <script>
+        // --- SAMPLE DYNAMIC CONTENT (Replace with actual data source/API calls) ---
+        const sampleBlogPosts = [
+            { id: "1", title: "বার্ষিক সাধারণ সভা অনুষ্ঠিত", image: "https://picsum.photos/seed/news1/400/250", date: "১০ই আগস্ট, ২০২৪", author: "অ্যাডমিন", excerpt: "সংযো্গ – নোফেল এর বার্ষিক সাধারণ সভা অত্যন্ত সফলভাবে অনুষ্ঠিত হয়েছে...", content: "<p>সংযো্গ – নোফেল এর বার্ষিক সাধারণ সভা গত ১০ই আগস্ট, ২০২৪ তারিখে সংস্থার প্রধান কার্যালয়ে অত্যন্ত উৎসবমুখর পরিবেশে অনুষ্ঠিত হয়েছে। সভায় বিগত বছরের কার্যক্রম পর্যালোচনা এবং আগামী বছরের জন্য কর্মপরিকল্পনা গৃহীত হয়।</p><p>সদস্যদের স্বতঃস্ফূর্ত অংশগ্রহণে সভা প্রাণবন্ত হয়ে ওঠে। বিস্তারিত কার্যবিবরণী শীঘ্রই প্রকাশ করা হবে। এই সভায় সংস্থার ভবিষ্যৎ কর্মপন্থা নির্ধারণ এবং নতুন কিছু সামাজিক প্রকল্প গ্রহণের ব্যাপারে আলোচনা করা হয়। সভাপতির ভাষণে তিনি সকল সদস্যকে তাদের অবদানের জন্য ধন্যবাদ জানান এবং সংস্থার লক্ষ্য অর্জনে ঐক্যবদ্ধভাবে কাজ করার আহ্বান জানান।</p>" },
+            { id: "2", title: "নতুন সদস্যপদ অভিযান শুরু", image: "https://picsum.photos/seed/news2/400/250", date: "০৫ই আগস্ট, ২০২৪", author: "টিম সংযো্গ", excerpt: "আমরা আনন্দের সাথে জানাচ্ছি যে নতুন সদস্যদের জন্য বিশেষ অভিযান শুরু হয়েছে...", content: "<p>সংযো্গ – নোফেল পরিবারে আপনাকে স্বাগতম! আমাদের নতুন সদস্যপদ অভিযান শুরু হয়েছে। এই অভিযানের আওতায় বিশেষ ছাড়ে সদস্যপদ গ্রহণ করার সুযোগ থাকছে।</p><p>সমাজের উন্নয়নে অবদান রাখতে এবং একটি প্রগতিশীল সম্প্রদায়ের অংশ হতে আজই আমাদের সাথে যোগ দিন। বিস্তারিত জানতে আমাদের অফিসে যোগাযোগ করুন অথবা ওয়েবসাইটে আবেদনপত্র পূরণ করুন। নতুন সদস্যদের জন্য বিভিন্ন পরিচিতিমূলক অনুষ্ঠানেরও আয়োজন করা হবে।</p>" },
+            { id: "3", title: "আসন্ন রক্তদান কর্মসূচি", image: "https://picsum.photos/seed/news3/400/250", date: "০১লা আগস্ট, ২০২৪", author: "নোটিশ বোর্ড", excerpt: "আগামী ২০শে আগস্ট একটি রক্তদান কর্মসূচির আয়োজন করা হয়েছে। সকলকে অংশগ্রহণের জন্য...", content: "<p> জীবন বাঁচাতে রক্ত দিন! সংযো্গ – নোফেল আগামী ২০শে আগস্ট, ২০২৪ তারিখে একটি স্বেচ্ছায় রক্তদান কর্মসূচির আয়োজন করতে যাচ্ছে। স্থান: [স্থান উল্লেখ করুন], সময়: সকাল ১০টা থেকে বিকাল ৪টা।</p><p>আপনার এক ব্যাগ রক্ত একজন মুমূর্ষু রোগীর জীবন বাঁচাতে পারে। নিজে রক্ত দিন, অন্যকে রক্তদানে উৎসাহিত করুন। সকলের উপস্থিতি ও সহযোগিতা একান্তভাবে কাম্য। রক্তদানের পর ডোনারদের জন্য বিশেষ আপ্যায়নের ব্যবস্থা থাকবে।</p>" }
+        ];
+
+        const sampleEvents = [
+            { id: "1", title: "বার্ষিক বনভোজন ২০২৪", image: "https://picsum.photos/seed/eventThumb1/400/250", fullImage: "https://picsum.photos/seed/eventFull1/800/450", date: "২৫শে ডিসেম্বর, ২০২৪", location: "নন্দন পার্ক, সাভার", type: "সদস্যদের জন্য", price: "৫০০ টাকা", excerpt: "আসছে বছরের অন্যতম আকর্ষণীয় ইভেন্ট, বার্ষিক বনভোজন...", details: "<p>সংযো্গ – নোফেল আয়োজন করতে যাচ্ছে বার্ষিক বনভোজন ২০২৪! ২৫শে ডিসেম্বর নন্দন পার্কে দিনব্যাপী আনন্দ আর উৎসবে মেতে উঠুন। থাকছে মজাদার সব খেলাধুলা, আকর্ষণীয় র‍্যাফেল ড্র এবং মনোজ্ঞ সাংস্কৃতিক অনুষ্ঠান।</p><p>সকালের নাস্তা, দুপুরের খাবার এবং বিকালের স্ন্যাকস পরিবেশন করা হবে। পরিবারের সদস্যদের নিয়েও অংশগ্রহণ করতে পারবেন (শর্ত প্রযোজ্য)।</p><p>নিবন্ধন ফি: জনপ্রতি ৫০০ টাকা। আসন সংখ্যা সীমিত। দ্রুত আপনার আসন নিশ্চিত করুন। নিবন্ধনের শেষ তারিখ: ১৫ই ডিসেম্বর, ২০২৪।</p>" },
+            { id: "2", title: "দক্ষতা উন্নয়ন কর্মশালা", image: "https://picsum.photos/seed/eventThumb2/400/250", fullImage: "https://picsum.photos/seed/eventFull2/800/450", date: "১৫ই নভেম্বর, ২০২৪", location: "সংস্থা কার্যালয়, ঢাকা", type: "সকলের জন্য উন্মুক্ত", price: "বিনামূল্যে", excerpt: "ফ্রিল্যান্সিং ও ডিজিটাল মার্কেটিং বিষয়ক দিনব্যাপী কর্মশালা...", details: "<p>ফ্রিল্যান্সিং ও ডিজিটাল মার্কেটিং এর উপর একটি বিশেষ দক্ষতা উন্নয়ন কর্মশালায় অংশগ্রহণ করে নিজের ক্যারিয়ারকে এগিয়ে নিন। আগামী ১৫ই নভেম্বর, ২০২৪ তারিখে সংযো্গ – নোফেল কার্যালয়ে এই কর্মশালাটি অনুষ্ঠিত হবে।</p><p>প্রশিক্ষক হিসেবে থাকবেন দেশের খ্যাতনামা ফ্রিল্যান্সার ও ডিজিটাল মার্কেটারগণ। কর্মশালাটি সকলের জন্য বিনামূল্যে উন্মুক্ত। অংশগ্রহণকারীদের সার্টিফিকেট প্রদান করা হবে। নিবন্ধন আবশ্যক।</p>" },
+            { id: "3", title: "বৃক্ষরোপণ অভিযান", image: "https://picsum.photos/seed/eventThumb3/400/250", fullImage: "https://picsum.photos/seed/eventFull3/800/450", date: "১০ই অক্টোবর, ২০২৪", location: "নির্দিষ্ট এলাকা, মিরপুর", type: "স্বেচ্ছাসেবী কার্যক্রম", price: "বিনামূল্যে", excerpt: "আসুন, সবুজ পৃথিবী গড়ি। আমাদের বৃক্ষরোপণ অভিযানে যোগ দিন...", details: "<p>পরিবেশের ভারসাম্য রক্ষায় এবং সবুজ পৃথিবী গড়ার লক্ষ্যে সংযো্গ – নোফেল আয়োজন করছে এক বৃক্ষরোপণ অভিযান। আগামী ১০ই অক্টোবর, ২০২৪ তারিখে [নির্দিষ্ট এলাকা] জুড়ে এই কর্মসূচি পালিত হবে।</p><p>সকল সদস্য ও শুভানুধ্যায়ীদের এই মহৎ উদ্যোগে অংশগ্রহণের জন্য আহ্বান জানানো হচ্ছে। আসুন, প্রত্যেকে অন্তত একটি করে গাছ লাগাই এবং আমাদের ভবিষ্যৎ প্রজন্মের জন্য একটি সুস্থ পরিবেশ নিশ্চিত করি। প্রয়োজনীয় সরঞ্জাম সংস্থা থেকে সরবরাহ করা হবে।</p>" }
+        ];
+        
+        const sampleFeedback = [
+            { name: "মোঃ আব্দুর রহিম", image: "https://picsum.photos/seed/avatarRahim/100/100", feedback: "সংযো্গ – নোফেল একটি অসাধারণ প্ল্যাটফর্ম। এখানকার কার্যক্রম সমাজের জন্য খুবই উপকারী। আমি এই সংস্থার একজন সদস্য হতে পেরে গর্বিত।" },
+            { name: "ফাতেমা আক্তার", image: "https://picsum.photos/seed/avatarFatema/100/100", feedback: "তাদের ইভেন্টগুলো খুবই সুসংগঠিত এবং শিক্ষণীয় হয়। নতুন অনেক কিছু শিখতে পারছি এবং অনেকের সাথে পরিচিত হওয়ার সুযোগ পাচ্ছি। ধন্যবাদ সংযো্গ – নোফেল।" },
+            { name: "সোহেল রানা", image: "https://picsum.photos/seed/avatarSohel/100/100", feedback: "এই সংস্থার স্বচ্ছতা এবং সদস্যদের প্রতি দায়বদ্ধতা আমাকে মুগ্ধ করেছে। তাদের ভবিষ্যৎ কার্যক্রমের জন্য শুভকামনা রইলো।" }
+        ];
+
+        const sampleTeamMembers = [
+            { name: "ডঃ মোঃ আব্দুল্লাহ", position: "সভাপতি", image: "https://picsum.photos/seed/teamAbdullah/150/150", bio: "প্রতিষ্ঠাতা সদস্য এবং বর্তমান সভাপতি। সমাজসেবায় দীর্ঘদিনের অভিজ্ঞতা এবং শিক্ষাবিদ হিসেবে সুপরিচিত।" },
+            { name: " ইঞ্জিনিয়ার ফারিহা হাসান", position: "সাধারণ সম্পাদক", image: "https://picsum.photos/seed/teamFariha/150/150", bio: "সংস্থার সকল প্রশাসনিক কার্যক্রম দেখাশোনা করেন। তরুণ, উদ্যমী এবং প্রযুক্তি বিশেষজ্ঞ।" },
+            { name: "ব্যারিস্টার সালমান চৌধুরী", position: "কোষাধ্যক্ষ", image: "https://picsum.photos/seed/teamSalman/150/150", bio: "সংস্থার আর্থিক ব্যবস্থাপনার দায়িত্বে নিয়োজিত। আইন পেশায় অভিজ্ঞ এবং অত্যন্ত নিষ্ঠাবান।" },
+            { name: "তাসনিম আহমেদ", position: "সাংগঠনিক সম্পাদক", image: "https://picsum.photos/seed/teamTasnim/150/150", bio: "সদস্যদের সংগঠিত করা এবং নতুন সদস্য সংগ্রহে অগ্রণী ভূমিকা রাখেন। যোগাযোগে দক্ষ।" }
+        ];
+        
+        const sampleLifeMembers = [
+            { id: "LM-001", name: "আজীবন সদস্য একরামুল হক", joinDate: "০১-০১-২০২০", mobile: "+৮৮০১২৩৪৫৬৭৮৯০", image: "https://picsum.photos/seed/lifeEkram/60/60" },
+            { id: "LM-002", name: "আজীবন সদস্য নাদিয়া সুলতানা", joinDate: "১৫-০২-২০২০", mobile: "+৮৮০১২৩৪৫৬৭৮৯১", image: "https://picsum.photos/seed/lifeNadia/60/60" },
+            { id: "LM-003", name: "আজীবন সদস্য কামরুল ইসলাম", joinDate: "১০-০৩-২০২০", mobile: "+৮৮০১৮০০০০০০০০", image: "https://picsum.photos/seed/lifeKamrul/60/60" }
+        ];
+
+        const sampleGeneralMembers = [
+            { id: "GM-001", name: "সাধারণ সদস্য प्रिया शर्मा", joinDate: "০১-০৩-২০২১", expiry: "৩১-১২-২০২৪", image: "https://picsum.photos/seed/generalPriya/60/60" },
+            { id: "GM-002", name: "সাধারণ সদস্য रविंद्र जडेजा", joinDate: "১৫-০৪-২০২১", expiry: "৩১-১২-২০২৪", image: "https://picsum.photos/seed/generalRavindra/60/60" },
+            { id: "GM-003", name: "সাধারণ সদস্য আনিকা তাবাসসুম", joinDate: "২০-০৫-২০২১", expiry: "৩১-১২-২০২৫", image: "https://picsum.photos/seed/generalAnika/60/60" }
+        ];
+
+        // --- RENDERING FUNCTIONS ---
+        function renderLatestBlogPostsHome(count = 3) {
+            const container = document.getElementById('home-blog-posts-container');
+            if (!container) return;
+            container.innerHTML = ''; 
+            const postsToDisplay = sampleBlogPosts.slice(0, count);
+            postsToDisplay.forEach((post, index) => {
+                const postHTML = `
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <div class="card blog-card h-100 shadow">
+                            <img src="${post.image}" class="card-img-top" alt="${post.title}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text text-muted"><small><i class="fas fa-user mr-1"></i> ${post.author} | <i class="fas fa-calendar-alt ml-2 mr-1"></i> ${post.date}</small></p>
+                                <p class="card-text">${post.excerpt}</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm mt-auto page-router" data-page="blog-single" data-postid="${post.id}">বিস্তারিত পড়ুন <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML += postHTML;
+            });
+        }
+
+        function renderLatestEventsHome(count = 3) {
+            const container = document.getElementById('home-events-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const eventsToDisplay = sampleEvents.slice(0, count);
+            eventsToDisplay.forEach((event, index) => {
+                const eventHTML = `
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <div class="card event-card h-100 shadow">
+                            <img src="${event.image}" class="card-img-top" alt="${event.title}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${event.title}</h5>
+                                <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt mr-1"></i> ${event.date} | <i class="fas fa-map-marker-alt ml-2 mr-1"></i> ${event.location}</small></p>
+                                <p class="card-text">${event.excerpt}</p>
+                                <p class="card-text"><strong>ধরণ:</strong> ${event.type} | <strong>মূল্য:</strong> ${event.price}</p>
+                                <a href="#" class="btn btn-primary mt-auto page-router" data-page="event-details" data-eventid="${event.id}">বিস্তারিত ও নিবন্ধন <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML += eventHTML;
+            });
+        }
+
+        function renderMemberFeedback() {
+            const container = document.getElementById('feedback-carousel-inner');
+            if (!container) return;
+            container.innerHTML = '';
+            sampleFeedback.forEach((fb, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                const feedbackHTML = `
+                    <div class="carousel-item ${activeClass}">
+                        <div class="feedback-card" data-aos="zoom-in-up" data-aos-delay="${index * 50}">
+                            <img src="${fb.image}" alt="${fb.name}">
+                            <h5>${fb.name}</h5>
+                            <p>"${fb.feedback}"</p>
+                        </div>
+                    </div>`;
+                container.innerHTML += feedbackHTML;
+            });
+        }
+        
+        function renderTeamMembers() {
+            const container = document.getElementById('team-members-container');
+            if (!container) return;
+            container.innerHTML = '';
+            sampleTeamMembers.forEach((member, index) => {
+                const memberHTML = `
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="card team-member-card h-100 p-3 shadow">
+                        <img src="${member.image}" alt="${member.name}" class="mx-auto">
+                        <h5 class="mt-3">${member.name}</h5>
+                        <p class="text-muted font-weight-bold">${member.position}</p>
+                        <p class="card-text"><small>${member.bio}</small></p>
+                    </div>
+                </div>`;
+                container.innerHTML += memberHTML;
+            });
+        }
+
+        function renderAllBlogPosts() {
+            const container = document.getElementById('all-blog-posts-container');
+            if (!container) return;
+            container.innerHTML = '';
+            sampleBlogPosts.forEach((post, index) => {
+                const postHTML = `
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 50}">
+                        <div class="card blog-card h-100 shadow">
+                            <img src="${post.image}" class="card-img-top" alt="${post.title}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text text-muted"><small><i class="fas fa-user mr-1"></i> ${post.author} | <i class="fas fa-calendar-alt ml-2 mr-1"></i> ${post.date}</small></p>
+                                <p class="card-text">${post.excerpt}</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm mt-auto page-router" data-page="blog-single" data-postid="${post.id}">বিস্তারিত পড়ুন <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML += postHTML;
+            });
+        }
+
+        function renderSingleBlogPost(postId) {
+            const post = sampleBlogPosts.find(p => p.id === postId);
+            const container = document.getElementById('single-blog-content-area');
+            const breadcrumbTitle = document.getElementById('single-blog-breadcrumb-title');
+            if (!post || !container || !breadcrumbTitle) {
+                if(container) container.innerHTML = "<p class='text-center'>দুঃখিত, এই পোস্টটি খুঁজে পাওয়া যায়নি।</p>";
+                if(breadcrumbTitle) breadcrumbTitle.textContent = "পোস্ট পাওয়া যায়নি";
+                return;
+            }
+            breadcrumbTitle.textContent = post.title;
+            container.innerHTML = `
+                <h1 data-aos="fade-in">${post.title}</h1>
+                <p class="text-muted" data-aos="fade-in" data-aos-delay="100"><small><i class="fas fa-user"></i> ${post.author} | <i class="fas fa-calendar-alt"></i> ${post.date}</small></p>
+                <img src="${post.image.replace('/400/250', '/800/400')}" class="img-fluid rounded my-3 shadow-lg" alt="${post.title}" data-aos="zoom-in-up">
+                <div data-aos="fade-up" class="mt-4">
+                    ${post.content}
+                </div>`;
+        }
+
+        function renderAllEvents() {
+            const container = document.getElementById('all-events-container');
+            if (!container) return;
+            container.innerHTML = '';
+            sampleEvents.forEach((event, index) => {
+                const eventHTML = `
+                    <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 50}">
+                       <div class="card event-card h-100 shadow">
+                           <img src="${event.image}" class="card-img-top" alt="${event.title}">
+                           <div class="card-body d-flex flex-column">
+                               <h5 class="card-title">${event.title}</h5>
+                               <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt mr-1"></i> ${event.date} | <i class="fas fa-map-marker-alt ml-2 mr-1"></i> ${event.location}</small></p>
+                               <p class="card-text">${event.excerpt}</p>
+                               <p class="card-text"><strong>ধরণ:</strong> ${event.type} | <strong>মূল্য:</strong> ${event.price}</p>
+                               <a href="#" class="btn btn-primary mt-auto page-router" data-page="event-details" data-eventid="${event.id}">বিস্তারিত ও নিবন্ধন <i class="fas fa-arrow-right ml-1"></i></a>
+                           </div>
+                       </div>
+                   </div>`;
+                container.innerHTML += eventHTML;
+            });
+        }
+
+        function renderSingleEvent(eventId) {
+            const event = sampleEvents.find(e => e.id === eventId);
+            const container = document.getElementById('single-event-content-area');
+            const breadcrumbTitle = document.getElementById('single-event-breadcrumb-title');
+
+            if (!event || !container || !breadcrumbTitle) {
+                 if(container) container.innerHTML = "<p class='text-center'>দুঃখিত, এই ইভেন্টটি খুঁজে পাওয়া যায়নি।</p>";
+                 if(breadcrumbTitle) breadcrumbTitle.textContent = "ইভেন্ট পাওয়া যায়নি";
+                return;
+            }
+            breadcrumbTitle.textContent = event.title;
+            container.innerHTML = `
+                <h1 data-aos="fade-in">${event.title}</h1>
+                <p class="text-muted" data-aos="fade-in" data-aos-delay="100">
+                    <small><i class="fas fa-calendar-alt mr-1"></i> ${event.date} | <i class="fas fa-map-marker-alt ml-2 mr-1"></i> ${event.location}</small><br>
+                    <small><strong>ধরণ:</strong> ${event.type} | <strong>মূল্য:</strong> ${event.price}</small>
+                </p>
+                <img src="${event.fullImage || event.image.replace('/400/250', '/800/400')}" class="img-fluid rounded my-3 shadow-lg" alt="${event.title}" data-aos="zoom-in-up">
+                <div data-aos="fade-up" class="mt-4">
+                    ${event.details}
+                </div>
+                <div class="mt-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#" class="btn btn-success btn-lg page-router" data-page="application-form">নিবন্ধন করুন (আবেদনপত্র)</a>
+                </div>`;
+        }
+        
+        function renderLifeMembers() {
+            const tbody = document.getElementById('lifeMemberListBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            sampleLifeMembers.forEach((member, index) => {
+                const rowHTML = `
+                <tr data-aos="fade-up" data-aos-delay="${index * 30}">
+                    <td><img src="${member.image || 'https://picsum.photos/seed/avatarDefault/60/60'}" alt="${member.name}" class="member-list-img"></td>
+                    <td>${member.id}</td>
+                    <td>${member.name}</td>
+                    <td>${member.joinDate}</td>
+                    <td>${member.mobile}</td>
+                </tr>`;
+                tbody.innerHTML += rowHTML;
+            });
+        }
+
+        function renderGeneralMembers() {
+            const tbody = document.getElementById('generalMemberListBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            sampleGeneralMembers.forEach((member, index) => {
+                const rowHTML = `
+                <tr data-aos="fade-up" data-aos-delay="${index * 30}">
+                    <td><img src="${member.image || 'https://picsum.photos/seed/avatarDefault/60/60'}" alt="${member.name}" class="member-list-img"></td>
+                    <td>${member.id}</td>
+                    <td>${member.name}</td>
+                    <td>${member.joinDate}</td>
+                    <td>${member.expiry}</td>
+                </tr>`;
+                tbody.innerHTML += rowHTML;
+            });
+        }
+
+
+        // --- PAGE ROUTING AND INITIALIZATION ---
+        function showPage(pageId, sectionId, params = {}) {
+            document.querySelectorAll('main > section[id^="page-"]').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                
+                if (pageId === 'home') {
+                    renderLatestBlogPostsHome();
+                    renderLatestEventsHome();
+                    renderMemberFeedback();
+                } else if (pageId === 'team') {
+                    renderTeamMembers();
+                } else if (pageId === 'blog') {
+                    renderAllBlogPosts();
+                } else if (pageId === 'blog-single' && params.postId) {
+                    renderSingleBlogPost(params.postId);
+                } else if (pageId === 'events') {
+                    renderAllEvents();
+                } else if (pageId === 'event-details' && params.eventId) {
+                    renderSingleEvent(params.eventId);
+                } else if (pageId === 'life-members') {
+                    renderLifeMembers();
+                } else if (pageId === 'members') {
+                    renderGeneralMembers();
+                }
+
+
+                if (sectionId && document.getElementById(sectionId)) {
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(sectionId);
+                        const offset = 70; // Navbar height
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = targetElement.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }, 100);
+                } else {
+                     window.scrollTo(0, 0);
+                }
+                // Refresh AOS after content is potentially re-rendered or displayed
+                setTimeout(() => AOS.refreshHard(), 50); // Delay to ensure DOM updates
+            } else {
+                console.warn("Page not found: " + pageId + ". Falling back to home.");
+                const homePage = document.getElementById('page-home');
+                if (homePage) {
+                     homePage.style.display = 'block';
+                     renderLatestBlogPostsHome();
+                     renderLatestEventsHome();
+                     renderMemberFeedback();
+                     setTimeout(() => AOS.refreshHard(), 50);
+                }
+            }
+
+            // Update active nav link
+            document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .dropdown-item').forEach(link => {
+                link.classList.remove('active');
+                const linkPage = link.dataset.page;
+                if (linkPage === pageId) {
+                    link.classList.add('active');
+                    let parentDropdownToggle = link.closest('.nav-item.dropdown')?.querySelector('.nav-link.dropdown-toggle');
+                    if (parentDropdownToggle) {
+                        parentDropdownToggle.classList.add('active');
+                    }
+                }
+            });
+            // Specific active states for parent dropdowns of detail pages
+            if (pageId === 'blog-single') {
+                document.querySelector('.nav-link.page-router[data-page="blog"]')?.classList.add('active');
+            }
+            if (pageId === 'event-details') {
+                document.querySelector('.nav-link.page-router[data-page="events"]')?.classList.add('active');
+            }
+            if (pageId === 'about') {
+                 document.querySelector('.nav-link.dropdown-toggle[aria-labelledby="aboutDropdown"]')?.classList.add('active');
+            }
+            if (pageId === 'video-gallery' || pageId === 'picture-gallery') {
+                document.querySelector('.nav-link.dropdown-toggle[aria-labelledby="galleryDropdown"]')?.classList.add('active');
+            }
+             if (['life-members', 'members'].includes(pageId)) { // Removed member-login
+                document.querySelector('.nav-link.dropdown-toggle[aria-labelledby="memberDropdown"]')?.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.page-router').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    const sectionId = this.dataset.section;
+                    const postId = this.dataset.postid;
+                    const eventId = this.dataset.eventid;
+                    
+                    let currentHash = `#${pageId}`;
+                    if (postId) currentHash += `/${postId}`;
+                    if (eventId) currentHash += `/${eventId}`;
+                    if (sectionId) currentHash += `&section=${sectionId}`;
+                    // window.location.hash = currentHash; // Optionally update hash for deep linking
+                    
+                    showPage(pageId, sectionId, { postId, eventId });
+
+                    if (window.innerWidth < 992 && $('.navbar-collapse').hasClass('show')) {
+                        $('.navbar-collapse').collapse('hide');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('#about-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const offset = 80; 
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementRect = targetElement.getBoundingClientRect().top;
+                        const elementPosition = elementRect - bodyRect;
+                        const offsetPosition = elementPosition - offset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            let initialPage = 'home';
+            let initialSection = null;
+            let initialParams = {};
+
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const parts = hash.split('&section=');
+                let pageAndParam = parts[0];
+                if (parts.length > 1) initialSection = parts[1];
+
+                const pageParts = pageAndParam.split('/');
+                const potentialPageId = pageParts[0];
+
+                if (document.getElementById('page-' + potentialPageId)) {
+                    initialPage = potentialPageId;
+                    if ((potentialPageId === 'blog-single' || potentialPageId === 'blog_single') && pageParts[1]) { // handle slight variations
+                        initialParams.postId = pageParts[1];
+                        initialPage = 'blog-single'; // Normalize
+                    } else if ((potentialPageId === 'event-details' || potentialPageId === 'event_details') && pageParts[1]) {
+                        initialParams.eventId = pageParts[1];
+                        initialPage = 'event-details'; // Normalize
+                    }
+                }
+            }
+            showPage(initialPage, initialSection, initialParams);
+
+
+            AOS.init({
+                duration: 800,
+                once: false, // Set to false if you want animations on scroll up too, true for once
+                offset: 100, // Offset to trigger animations a bit earlier/later
+                debounceDelay: 50, // Optional: wait 50ms until last scroll event
+                throttleDelay: 99, // Optional: execute scroll handler every 99ms
+            });
+
+            (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                    var forms = document.getElementsByClassName('needs-validation');
+                    Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                            if (form.checkValidity() === true) {
+                                event.preventDefault();
+                                let message = "ফর্ম সফলভাবে জমা হয়েছে (ফ্রন্টএন্ড ডেমো)।";
+                                if (form.id === "memberApplicationForm") message = "সদস্য আবেদন সফলভাবে জমা হয়েছে (ফ্রন্টএন্ড ডেমো)।";
+                                else if (form.id === "donationForm") message = "অনুদান প্রক্রিয়া শুরু (ফ্রন্টএন্ড ডেমো)।";
+                                else if (form.id === "contactForm") message = "আপনার বার্তা পাঠানো হয়েছে (ফ্রন্টএন্ড ডেমো)।";
+                                
+                                alert(message + " ব্যাকএন্ড প্রয়োজন প্রক্রিয়াকরণের জন্য।");
+                                form.reset();
+                                form.classList.remove('was-validated');
+                            }
+                        }, false);
+                    });
+                }, false);
+            })();
+
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $("#lifeMemberSearch").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#lifeMemberListBody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+             $("#generalMemberSearch").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#generalMemberListBody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            
+            // Ensure carousel starts playing if it's on the initial page
+            if (initialPage === 'home') {
+                 $('#heroCarousel').carousel('cycle');
+                 $('#member-feedback-carousel').carousel('cycle');
+            }
+
+
+        });
+    </script>
+
+</body>
+</html>
